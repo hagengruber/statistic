@@ -3,6 +3,8 @@
 	<head>
 		
 		<link rel="stylesheet" href="./style/statistic.css" type="text/css">
+		<script src="./js/scroll.js" defer=""> </script>
+		<script src="./js/difference.js" defer=""> </script>
 		
 	</head>
 
@@ -29,17 +31,12 @@
 			// SVG-Container wird geschlossen
 			echo '</svg>';
 			
+			echo '<input type="hidden" value="' . statistic::$max . '" id="max">';
+			
 			statistic::put_gui_marking();
 			
 		?>
 		
-		<script>
-			
-			// document.getElementById('scroll').style.left = document.querySelector('svg').clientWidth;
-			document.getElementById('scroll').scrollIntoView({ behavior: 'smooth' });
-			
-		</script>
-	
 	</body>
 	
 </html>

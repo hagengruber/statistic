@@ -70,7 +70,9 @@
 			self::$data_form = $data;
 			
 			// Graf wird beendet
-			echo '" stroke-linecap="round" fill="none" stroke="silver" stroke-width="5">';
+			echo '" stroke-linecap="round" fill="none" stroke="silver" stroke-width="5"> </polyline>';
+			
+			echo '<a id="pol" href="#"> </polyline> </a>';
 
 		}
 
@@ -115,7 +117,7 @@
 				}
 				
 				// Gib Beschriftung aus
-				echo ' <div class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '"> ' . $data[$i] . '€ </div> ';
+				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '"><span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> ';
 				
 				$width += 100;
 				
