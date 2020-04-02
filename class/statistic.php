@@ -124,7 +124,7 @@
 			}
 			
 			// DIV-Container wird zum letzten Punkt für das Scrollen gesetzt
-			echo ' <div class="cap" id="scroll" style="top: ' . $top . 'px; left: ' . $left . 'px;"> </div> ';
+			echo ' <div id="scroll" style="position: absolute; top: ' . $top . 'px; left: ' . $left . 'px;"> </div> ';
 			
 		}
 		
