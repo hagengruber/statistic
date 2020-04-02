@@ -25,7 +25,7 @@
 	
 	<body>
 		
-		<iframe src="./statistics.php" style="height: 90vh; width: 100%; border: none;"> </iframe>
+		<iframe src="./statistics.php" style="height: 90vh; width: 100%; border: none;"> Ihr Browser unterstützt leider kein IFrame... :( </iframe>
 		
 		<form action="" method="POST">
 			
