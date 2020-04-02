@@ -19,7 +19,7 @@
 			
 			// Erstellt ein SVG Container
 			// Die Breite wird an der Anzahl der Geldbeträge angepasst
-			echo '<svg style="height: 100%; width: ' . count($data) * 100 . 'px;">';
+			echo '<svg style="height: ' . statistic::$max . 'px; width: ' . count($data) * 100 . 'px; margin-left: 10px">';
 			
 			// Erstellt den Grafen
 			statistic::put_gui_graph();
@@ -33,11 +33,9 @@
 			
 		?>
 		
-		<div style="position: absolute;" id="scroll"> </div>
-
 		<script>
 			
-			document.getElementById('scroll').style.left = document.querySelector('svg').clientWidth;
+			// document.getElementById('scroll').style.left = document.querySelector('svg').clientWidth;
 			document.getElementById('scroll').scrollIntoView({ behavior: 'smooth' });
 			
 		</script>

@@ -11,8 +11,6 @@
 		
 		if(isset($_POST['money'])) {
 			
-			echo $_POST['date'];
-			
 			$file = file_get_contents('./data.dat');
 			
 			$f = fopen('./data.dat', "w");
@@ -25,11 +23,11 @@
 	
 	<body>
 		
-		<iframe src="./statistics.php" style="height: 90vh; width: 100%; border: none;"> Ihr Browser unterstützt leider kein IFrame... :( </iframe>
+		<iframe src="./statistics.php" style="height: 90vh; width: 100%; border: none;"> Ihr Browser unterstützt leider kein iFrame... :( </iframe>
 		
 		<form action="" method="POST">
 			
-			<input name="money"> <input type="date" name="date"> <input type="submit" value="Eintrag hinzufügen">
+			<input name="money" type="number"> <input type="submit" value="Eintrag hinzufügen">
 			
 		</form>
 		

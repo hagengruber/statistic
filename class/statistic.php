@@ -7,15 +7,26 @@
 		// Geldbeträge in Form eines Arrays
 		static $data;
 		static $data_form;
+		static $max;
 		
 		// Speichert die Geldbeträge in Form eines Arrays in die Variable statistic::$data
 		public static function get_data() {
+			
+			if(!file_exists('./data.dat')) {
+				
+				$f = fopen('./data.dat', "w");
+				fwrite($f, '0;');
+				fclose($f);
+				
+			}
 			
 			// Geldbeträge in Variable lesen und als Array speichern
 			$data = explode(';', file_get_contents('./data.dat'));
 			
 			// Letzter Index beinhaltet NULL -> löschen
 			unset($data[count($data) - 1]);
+			
+			self::$max = max($data) + 20;
 			
 			self::$data = $data;
 			
@@ -36,7 +47,7 @@
 			// Punkte der Grafen werden festgelegt
 			for($i = 0; $i != count($data); $i++) {
 				
-				$data[$i] = 800 - ($data[$i] / 10);
+				$data[$i] = self::$max - $data[$i];
 				
 				echo $width . ',' . $data[$i] . ' ';
 			
@@ -55,7 +66,7 @@
 			
 			$data = self::$data;
 			
-			$width = 0;
+			$width = 10;
 			
 			for($i = 0; $i != count($data); $i++) {
 				
@@ -87,6 +98,8 @@
 				$width += 100;
 				
 			}
+			
+			echo ' <div class="cap" id="scroll" style="top: ' . $t . 'px; left: ' . $t_w . 'px;"> </div> ';
 			
 		}
 		
