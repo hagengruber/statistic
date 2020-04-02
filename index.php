@@ -9,10 +9,13 @@
 	
 	<?php
 		
+		// Wenn ein neuer Geldbetrag hinzugefügt wird
 		if(isset($_POST['money'])) {
 			
+			// Hole die vorherigen Daten
 			$file = file_get_contents('./data.dat');
 			
+			// Schreibe neuen Geldbetrag in die Datei
 			$f = fopen('./data.dat', "w");
 			fwrite($f, $file . $_POST['money'] . ';');
 			fclose($f);

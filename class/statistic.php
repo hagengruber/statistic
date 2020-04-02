@@ -8,10 +8,13 @@
 		static $data;
 		static $data_form;
 		static $max;
+		static $min;
+		static $svg_height;
 		
 		// Speichert die Geldbeträge in Form eines Arrays in die Variable statistic::$data
 		public static function get_data() {
 			
+			// Wenn die Datei nicht existiert, erzeuge eine neue mit dem Wert 0
 			if(!file_exists('./data.dat')) {
 				
 				$f = fopen('./data.dat', "w");
@@ -26,9 +29,15 @@
 			// Letzter Index beinhaltet NULL -> löschen
 			unset($data[count($data) - 1]);
 			
-			self::$max = max($data) + 20;
-			
+			// $data speichern
 			self::$data = $data;
+			
+			// Max. und min. Geldbetrag speichern
+			self::$max = max($data) + 10;
+			self::$min = min($data);
+			
+			// SVG-Container Höhe berechnen
+			self::$svg_height = self::$max - self::$min;
 			
 		}
 		
@@ -47,10 +56,13 @@
 			// Punkte der Grafen werden festgelegt
 			for($i = 0; $i != count($data); $i++) {
 				
+				// Geldbetrag wird vom Max. Geldbetrag subtrahieren
+				// So wird der Graf richtig rum dargestellt
 				$data[$i] = self::$max - $data[$i];
 				
 				echo $width . ',' . $data[$i] . ' ';
 			
+				// Gleichbleibender Abstand zwischen Punkten
 				$width += 100;
 			
 			}
@@ -62,27 +74,36 @@
 
 		}
 
+		// Gibt Beschriftung der einzelnen Punkte aus
 		public static function put_gui_marking() {
 			
 			$data = self::$data;
 			
+			// Breite beginnt ab 10px
 			$width = 10;
 			
+			// Jeder Punkt wird beschriftet
 			for($i = 0; $i != count($data); $i++) {
 				
-				$t = self::$data_form[$i] - 50;
-				$t_w = $width - 40;
+				// Der Abstand zu top wird festgelegt
+				$top = self::$data_form[$i] - 50;
 				
+				// Der Abstand zu left wird festgelegt
+				$left = $width - 40;
+				
+				// Wenn vorherige Geldbeträge existieren, wird die differenz ermittelt
 				if(isset($data[$i - 1])) {
 					
 					$dif = $data[$i] - $data[$i - 1];
 					
 				} else {
 					
+					// Wenn nicht, wird die differenz auf 0 gesetzt
 					$dif = 0;
 
 				}
 				
+				// Wenn die differenz im positiven Bereich liegt, wird ein "+" angefügt
 				if($dif > 0) {
 					
 					$dif = '+' . $dif . '€';
@@ -93,13 +114,15 @@
 				
 				}
 				
-				echo ' <div class="cap" style="top: ' . $t . '; left: ' . $t_w . ';" title="' . $dif . '"> ' . $data[$i] . '€ </div> ';
+				// Gib Beschriftung aus
+				echo ' <div class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '"> ' . $data[$i] . '€ </div> ';
 				
 				$width += 100;
 				
 			}
 			
-			echo ' <div class="cap" id="scroll" style="top: ' . $t . 'px; left: ' . $t_w . 'px;"> </div> ';
+			// DIV-Container wird zum letzten Punkt für das Scrollen gesetzt
+			echo ' <div class="cap" id="scroll" style="top: ' . $top . 'px; left: ' . $left . 'px;"> </div> ';
 			
 		}
 		

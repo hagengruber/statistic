@@ -19,7 +19,7 @@
 			
 			// Erstellt ein SVG Container
 			// Die Breite wird an der Anzahl der Geldbeträge angepasst
-			echo '<svg style="height: ' . statistic::$max . 'px; width: ' . count($data) * 100 . 'px; margin-left: 10px">';
+			echo '<svg style="height: ' . statistic::$svg_height . 'px; width: ' . count($data) * 100 . 'px; margin-left: 10px">';
 			
 			// Erstellt den Grafen
 			statistic::put_gui_graph();
