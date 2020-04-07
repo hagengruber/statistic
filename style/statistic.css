@@ -6,6 +6,7 @@
 	transition: 0.3s;
 	margin-top: 50px;
 	font-family: Arial;
+	z-index: 99999;
 	
 }
 
@@ -30,6 +31,20 @@
 	
 }
 
+.show_n {
+	
+	position: relative;
+	top: -20px;
+	padding: 10px 20px;
+	left: -5px;
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+	border-radius: 20px;
+	z-index: 0;
+	
+}
+
 .cap:hover .show {
 	
 	background-color: black;
@@ -50,6 +65,19 @@
 	border-color: transparent transparent transparent transparent;
 	transition: 0.3s;
 
+}
+
+.show_n::after {
+	
+	content: "";
+	position: absolute;
+	top: 39px;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+	
 }
 
 .cap:hover .show::after {
@@ -109,5 +137,18 @@
 		transform: rotate(0deg);
 		
 	}
+	
+}
+
+#difference {
+	
+	position: absolute;
+	font-family: Arial;
+	
+}
+
+#difference_inner {
+	
+	opacity: 0;
 	
 }

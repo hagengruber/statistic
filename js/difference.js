@@ -15,16 +15,11 @@ function difference(id) {
 		second = id;
 
 		if(first != second) {
-			
-			console.log("Ja");	
+				
 			calcu(first, second);
 
-		} else {
-			
-			console.log("Nein");
-			
 		}
-
+		
 		first = undefined;
 		
 	}
@@ -46,17 +41,29 @@ function calcu(a, b) {
 	var se_top = max - se;
 	var pos_se_left = document.getElementById(b).getBoundingClientRect().left + pageXOffset;
 	
+	document.getElementById("difference").style.top = middel(fi_top, se_top) - 50;
+	document.getElementById("difference").style.left = middel(pos_fi_left, pos_se_left);
+	document.getElementById("difference_inner").style.opacity = 1;
+	
 	document.getElementById("pol").innerHTML = '<polyline id="dif" points="' + pos_fi_left + ',' + fi_top + ' ' + pos_se_left + ',' + se_top + '" stroke-linecap="round" stroke-dasharray="50" title="Test" fill="none" stroke-width="3">';
 	
 	if(dif > 0) {
 		
 		document.getElementById("dif").style.stroke = "red"
+		document.getElementById("difference_inner").innerHTML = "- " + dif + "€"
 		
 	} else {
 		
 		document.getElementById("dif").style.stroke = "green"
+		document.getElementById("difference_inner").innerHTML = "+ " + dif * -1 + "€"
 		
 		
 	}
+	
+}
+
+function middel(a, b) {
+	
+	return (a + b) / 2;
 	
 }
