@@ -17,3 +17,43 @@
 	padding-bottom: 60px;
 	
 }
+
+.active {
+	
+	opacity: 1;
+	cursor: pointer;
+	margin-top: 0;
+	padding-bottom: 60px;
+	animation-name: active;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	
+}
+
+@keyframes active {
+	
+	0% {
+		
+		transform: rotate(0deg);
+		
+	}
+	
+	25% {
+		
+		transform: rotate(20deg);
+		
+	}
+	
+	50% {
+		
+		transform: rotate(-20deg);
+		
+	}
+	
+	100% {
+		
+		transform: rotate(0deg);
+		
+	}
+	
+}

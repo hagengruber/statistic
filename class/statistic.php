@@ -117,7 +117,7 @@
 				}
 				
 				// Gib Beschriftung aus
-				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '"><span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> ';
+				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"><span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> ';
 				
 				$width += 100;
 				

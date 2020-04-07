@@ -6,12 +6,24 @@ function difference(id) {
 	if(first == undefined) {
 		
 		first = id;
+		document.getElementById("div"+id).classList.add("active");
 		
 	} else {
 		
+		document.getElementById("div"+first).classList.remove("active");
+		
 		second = id;
 
-		calcu(first, second);
+		if(first != second) {
+			
+			console.log("Ja");	
+			calcu(first, second);
+
+		} else {
+			
+			console.log("Nein");
+			
+		}
 
 		first = undefined;
 		
