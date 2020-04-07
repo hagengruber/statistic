@@ -33,7 +33,7 @@
 			self::$data = $data;
 			
 			// Max. und min. Geldbetrag speichern
-			self::$max = max($data) + 10;
+			self::$max = max($data) + 100;
 			self::$min = min($data);
 			
 			// SVG-Container Höhe berechnen
@@ -51,7 +51,7 @@
 			
 			// Breite der einzelnen Punkte
 			// Regelmäßiger Abstand von 100px
-			$width = 0;
+			$width = 10;
 
 			// Punkte der Grafen werden festgelegt
 			for($i = 0; $i != count($data); $i++) {
@@ -88,10 +88,11 @@
 			for($i = 0; $i != count($data); $i++) {
 				
 				// Der Abstand zu top wird festgelegt
-				$top = self::$data_form[$i] - 50;
+				$top = self::$data_form[$i] - 70;
 				
 				// Der Abstand zu left wird festgelegt
-				$left = $width - 40;
+				// Je größer die Zahl, desto kleiner wird links
+				$left = $width - 49;
 				
 				// Wenn vorherige Geldbeträge existieren, wird die differenz ermittelt
 				if(isset($data[$i - 1])) {
@@ -117,7 +118,7 @@
 				}
 				
 				// Gib Beschriftung aus
-				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"><span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> ';
+				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"> <div class="show"> <span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> </div> ';
 				
 				$width += 100;
 				

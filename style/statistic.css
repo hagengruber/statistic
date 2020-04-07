@@ -4,7 +4,7 @@
 	padding: 30px;
 	opacity: 0.3;
 	transition: 0.3s;
-	margin-top: 30px;
+	margin-top: 50px;
 	font-family: Arial;
 	
 }
@@ -14,8 +14,48 @@
 	opacity: 1;
 	cursor: pointer;
 	margin-top: 0;
-	padding-bottom: 60px;
+	padding-bottom: 80px;
 	
+}
+
+.show {
+	
+	position: relative;
+	top: -20px;
+	padding: 10px 20px;
+	left: -5px;
+	transition: 0.3s;
+	border: 1px solid transparent;
+	border-radius: 20px;
+	
+}
+
+.cap:hover .show {
+	
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+	
+}
+
+.cap .show::after {
+	
+	content: "";
+	position: absolute;
+	top: 39px;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent transparent transparent;
+	transition: 0.3s;
+
+}
+
+.cap:hover .show::after {
+
+	border-color: black transparent transparent transparent;
+
 }
 
 .active {
@@ -28,6 +68,20 @@
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
 	
+}
+
+.active .show {
+	
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+	
+}
+
+.active .show::after {
+
+	border-color: black transparent transparent transparent;
+
 }
 
 @keyframes active {
