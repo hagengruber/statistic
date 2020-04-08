@@ -29,15 +29,41 @@
 			// Letzter Index beinhaltet NULL -> löschen
 			unset($data[count($data) - 1]);
 			
+			$date_data = [];
+			
+			for($i = 0; $i != count($data); $i++) {
+				
+				$temp_data = explode(',', $data[$i]);
+				
+				$date_data[$i] = [ 'money' => $temp_data[0], 'date' => $temp_data[1] ];
+				
+			}
+			
 			// $data speichern
-			self::$data = $data;
+			self::$data = $date_data;
+			
 			
 			// Max. und min. Geldbetrag speichern
-			self::$max = max($data) + 100;
-			self::$min = min($data);
+			self::$max = self::max_min_betrag(true) + 100;
+			self::$min = self::max_min_betrag(false);
 			
 			// SVG-Container Höhe berechnen
 			self::$svg_height = self::$max - self::$min;
+			
+		}
+		
+		public static function max_min_betrag($fun) {
+			
+			$data = self::$data;
+			$betrag = [];
+			
+			for($i = 0; $i != count($data); $i++) {
+				
+				$betrag[$i] = $data[$i]['money'];
+				
+			}
+			
+			return $fun ? max($betrag) : min($betrag); 
 			
 		}
 		
@@ -58,9 +84,9 @@
 				
 				// Geldbetrag wird vom Max. Geldbetrag subtrahieren
 				// So wird der Graf richtig rum dargestellt
-				$data[$i] = self::$max - $data[$i];
+				$data[$i]['money'] = self::$max - $data[$i]['money'];
 				
-				echo $width . ',' . $data[$i] . ' ';
+				echo $width . ',' . $data[$i]['money'] . ' ';
 			
 				// Gleichbleibender Abstand zwischen Punkten
 				$width += 100;
@@ -88,7 +114,7 @@
 			for($i = 0; $i != count($data); $i++) {
 				
 				// Der Abstand zu top wird festgelegt
-				$top = self::$data_form[$i] - 70;
+				$top = self::$data_form[$i]['money'] - 70;
 				
 				// Der Abstand zu left wird festgelegt
 				// Je größer die Zahl, desto kleiner wird links
@@ -97,7 +123,7 @@
 				// Wenn vorherige Geldbeträge existieren, wird die differenz ermittelt
 				if(isset($data[$i - 1])) {
 					
-					$dif = $data[$i] - $data[$i - 1];
+					$dif = $data[$i]['money'] - $data[$i - 1]['money'];
 					
 				} else {
 					
@@ -118,19 +144,19 @@
 				}
 				
 				// Gib Beschriftung aus
-				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"> <div class="show"> <span id="' . $i . '"> ' . $data[$i] . '</span>€ </div> </div> ';
+				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"> <div class="show"> <span id="' . $i . '"> ' . $data[$i]['money'] . '</span>€ </div> </div> ';
 				
 				$width += 100;
 				
 			}
 			
 			// DIV-Container wird zum letzten Punkt für das Scrollen gesetzt
-			echo ' <div id="scroll" style="position: absolute; top: ' . $top . 'px; left: ' . $left . 'px;"> </div> ';
+			echo ' <div id="scroll" style="position: absolute; top: ' . $top . 'px; left: ' . ($left+200) . 'px;"> </div> ';
 			
-			echo '<div id="difference" class="cap_n"> <div class="show_n" id="difference_inner">Test </div>';
+			echo '<div id="difference" class="cap_n"> <div class="show_n" id="difference_inner">Test </div> </div>';
 			
 		}
-		
+	
 	}
 	
 ?>

@@ -17,7 +17,7 @@
 			
 			// Schreibe neuen Geldbetrag in die Datei
 			$f = fopen('./data.dat', "w");
-			fwrite($f, $file . $_POST['money'] . ';');
+			fwrite($f, $file . $_POST['money'] . ',' . date("t.m.y") . ';');
 			fclose($f);
 			
 		}
