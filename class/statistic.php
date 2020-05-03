@@ -18,7 +18,7 @@
 			if(!file_exists('./data.dat')) {
 				
 				$f = fopen('./data.dat', "w");
-				fwrite($f, '0;');
+				fwrite($f, '0,' . date("t.m.y") . ';');
 				fclose($f);
 				
 			}
