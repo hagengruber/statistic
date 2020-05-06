@@ -144,7 +144,9 @@
 				}
 				
 				// Gib Beschriftung aus
-				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"> <div class="show"> <span id="' . $i . '"> ' . $data[$i]['money'] . '</span>€ </div> </div> ';
+				echo ' <div onclick="difference(' . $i . ')" class="cap" style="top: ' . $top . '; left: ' . $left . ';" title="' . $dif . '" id="div' . $i . '"> <div class="show"> <span id="' . $i . '"> ' . $data[$i]['money'] . ' </span>€ </div> </div> ';
+				echo ' <div style="color: #AFAEAE; position: absolute; top: ' . ($top-20) . '; left: ' . ($left+49) . ';" > ' . $data[$i]['date'] . ' </div> ';
+				echo ' <div class="border" style="top: ' . ($top-5) . '; left: ' . ($left+65) . ';" > </div> ';
 				
 				$width += 100;
 				
@@ -153,7 +155,7 @@
 			// DIV-Container wird zum letzten Punkt für das Scrollen gesetzt
 			echo ' <div id="scroll" style="position: absolute; top: ' . $top . 'px; left: ' . ($left+200) . 'px;"> </div> ';
 			
-			echo '<div id="difference" class="cap_n"> <div class="show_n" id="difference_inner">Test </div> </div>';
+			echo '<div id="difference" class="cap_n"> <div class="show_n" id="difference_inner"> Test </div> </div>';
 			
 		}
 	

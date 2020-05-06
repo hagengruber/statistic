@@ -28,6 +28,16 @@
 	transition: 0.3s;
 	border: 1px solid transparent;
 	border-radius: 20px;
+	width: 50px;
+	
+}
+
+.border {
+	
+	position: absolute;
+	height: 80px;
+	border: none;
+	border-left: 3px solid #F9F9F9;
 	
 }
 
